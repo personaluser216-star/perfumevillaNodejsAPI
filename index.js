@@ -11,7 +11,11 @@ Connect()
 dotenv.config();
 const PORT = process.env.PORT || 4000
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+  origin: "*",  
+  methods: ["GET","POST","PUT","DELETE"],
+  credentials: true
+}));
 app.use("/admin",AdminRouter);
 app.use("/product",ProductRouter);
 app.use("/cart",CartRouter);
